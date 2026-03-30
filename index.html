@@ -28,7 +28,32 @@
         .function-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
         .function-table th { text-align: left; color: var(--accent); border-bottom: 2px solid #334155; padding: 10px; }
         .function-table td { padding: 12px; border-bottom: 1px solid #334155; }
-    </style>
+    /* MOBILE RESPONSIVE FIX */
+@media (max-width: 768px) {
+    body {
+        display: block; /* Stack sidebar and main vertically */
+    }
+    nav {
+        width: 100%;
+        height: auto;
+        position: relative;
+        border-right: none;
+        border-bottom: 1px solid #334155;
+        padding: 10px;
+    }
+    main {
+        margin-left: 0; /* Remove the gap on the left */
+        padding: 20px;
+        width: 95%;
+    }
+    .chapter {
+        padding: 15px;
+    }
+    pre {
+        font-size: 0.85rem; /* Shrink code slightly so it doesn't wrap weirdly */
+    }
+}
+</style>
 </head>
 <body>
 
