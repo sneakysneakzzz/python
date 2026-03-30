@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Master Guide - Mellor</title>
+    <style>
+        :root { --bg: #0f172a; --card: #1e293b; --text: #f8fafc; --accent: #38bdf8; --code: #f472b6; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); margin: 0; display: flex; }
+        
+        /* Sidebar Navigation */
+        nav { width: 260px; background: #020617; height: 100vh; position: fixed; padding: 20px; border-right: 1px solid #334155; overflow-y: auto; }
+        nav h2 { color: var(--accent); font-size: 1.2rem; }
+        nav ul { list-style: none; padding: 0; }
+        nav li { margin: 15px 0; }
+        nav a { color: #94a3b8; text-decoration: none; transition: 0.2s; }
+        nav a:hover { color: var(--accent); }
+
+        /* Main Content Area */
+        main { margin-left: 300px; padding: 40px; width: 100%; max-width: 1000px; }
+        .chapter { background: var(--card); padding: 30px; border-radius: 12px; margin-bottom: 40px; border: 1px solid #334155; line-height: 1.6; }
+        h1 { color: var(--accent); font-size: 2.5rem; }
+        h2 { border-bottom: 2px solid var(--accent); padding-bottom: 10px; display: inline-block; }
+        
+        /* Code Styling */
+        code { background: #000; color: var(--code); padding: 2px 6px; border-radius: 4px; font-family: 'Fira Code', monospace; }
+        pre { background: #000; padding: 15px; border-radius: 8px; overflow-x: auto; border: 1px solid #475569; }
+        .function-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .function-table th { text-align: left; color: var(--accent); border-bottom: 2px solid #334155; padding: 10px; }
+        .function-table td { padding: 12px; border-bottom: 1px solid #334155; }
+    </style>
+</head>
+<body>
+
+<nav>
+<h2>Chapters</h2>
+<ul id="sidebar-links">
+<li><a href="#search-section">🔍 Search Guide</a></li>
+<li><a href="#errors">⚠️ Common Errors</a></li>
+<li><a href="#cyber-cheat">🛡️ Cyber Cheat Sheet</a></li>
+<li><a href="#ch1">1. Variables & Types</a></li>
+<li><a href="#ch2">2. Math & String Mastery</a></li>
+<li><a href="#ch3">3. Lists & Dictionaries</a></li>
+<li><a href="#ch4">4. Setup vs. Loop Logic</a></li>
+<li><a href="#ch5">5. Logic & If-Statements</a></li>
+<li><a href="#ch6">6. Loops (For & While)</a></li>
+<li><a href="#ch7">7. Custom Functions (def)</a></li>
+<li><a href="#ch8">8. Modules & Libraries</a></li>
+<li><a href="#ch9">9. File Handling (Read/Write)</a></li>
+<li><a href="#ch10">10. Error Handling (Try/Except)</a></li>
+<li><a href="#ch11">11. Classes & Objects (OOP)</a></li>
+<li><a href="#ch12">12. List Comprehensions (Pro-Shortcuts)</a></li>
+<li><a href="#ch13">13. Decorators & Generators</a></li>
+<li><a href="#ch14">14. APIs & Web Scraping</a></li>
+<li><a href="#ch15">15. Cybersecurity & Automation</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+<main id="book-container">
+    <h1>Python: The Complete Guide</h1>
+    <div class="chapter" id="search-section">
+    <h2>Quick Search</h2>
+    <input type="text" id="guideSearch" onkeyup="searchBook()" placeholder="Search for a function (e.g. 'print', 'socket')..." 
+    style="width: 100%; padding: 15px; border-radius: 8px; border: 1px solid var(--accent); background: #000; color: var(--accent); font-size: 1.1rem;">
+</div>
+    <p>Welcome, Mellor. This is your custom Python reference book.</p>
+
+    <div id="ch1" class="chapter">
+        <h2>Chapter 1: Variables & Core Logic</h2>
+        <p>Variables are the "boxes" where you store information.</p>
+        <pre><code># Assignment
+x = 180          # Integer
+name = "Mellor"  # String
+is_pro = True    # Boolean</code></pre>
+        <table class="function-table">
+            <tr><th>Function</th><th>Purpose</th><th>Where to use</th></tr>
+            <tr><td><code>type()</code></td><td>Checks what data type a variable is.</td><td>Terminal/Scripts</td></tr>
+            <tr><td><code>id()</code></td><td>Finds the memory address of a variable.</td><td>Debugging</td></tr>
+        </table>
+    </div>
+
+<div id="ch2" class="chapter">
+    <h2>Chapter 2: Math & String Mastery</h2>
+    <p>In Python, you can manipulate numbers and text using these core functions. You write these directly in your script or the Python interpreter.</p>
+    
+    <h3>Math Functions</h3>
+    <table class="function-table">
+        <tr>
+            <th>Function</th>
+            <th>How to Write It</th>
+            <th>Purpose</th>
+        </tr>
+        <tr>
+            <td><code>abs()</code></td>
+            <td><code>abs(-50)</code></td>
+            <td>Returns the absolute (positive) value of a number. Useful for distance calculations.</td>
+        </tr>
+        <tr>
+            <td><code>round()</code></td>
+            <td><code>round(3.14159, 2)</code></td>
+            <td>Rounds a number to a specific decimal point (e.g., results in 3.14).</td>
+        </tr>
+        <tr>
+            <td><code>pow()</code></td>
+            <td><code>pow(4, 2)</code></td>
+            <td>Raises a number to a power (4 to the power of 2 = 16).</td>
+        </tr>
+        <tr>
+            <td><code>max() / min()</code></td>
+            <td><code>max(1, 5, 10)</code></td>
+            <td>Finds the largest or smallest number in a group or list.</td>
+        </tr>
+    </table>
+
+    <h3>String (Text) Functions</h3>
+    <p>Strings are immutable (cannot be changed), so these functions return a <b>new</b> version of the text.</p>
+    <table class="function-table">
+        <tr>
+            <th>Function</th>
+            <th>How to Write It</th>
+            <th>Purpose</th>
+        </tr>
+        <tr>
+            <td><code>.upper() / .lower()</code></td>
+            <td><code>"Hi".upper()</code></td>
+            <td>Converts text to ALL CAPS or all lowercase.</td>
+        </tr>
+        <tr>
+            <td><code>.strip()</code></td>
+            <td><code>"  text  ".strip()</code></td>
+            <td>Removes accidental spaces from the beginning and end of a string.</td>
+        </tr>
+        <tr>
+            <td><code>.replace()</code></td>
+            <td><code>txt.replace("A", "B")</code></td>
+            <td>Swaps a specific piece of text with something else.</td>
+        </tr>
+        <tr>
+            <td><code>.split()</code></td>
+            <td><code>"a,b,c".split(",")</code></td>
+            <td>Turns a string into a List based on a separator (like a comma).</td>
+        </tr>
+    </table>
+
+    <div class="code-box" style="background: #000; padding: 10px; margin-top: 20px; border-radius: 8px;">
+        <p style="color: #38bdf8; margin: 0;"># Pro-Tip for Mellor:</p>
+        <code style="color: #f472b6;">
+            user_input = input("Enter Command: ").strip().lower()<br>
+            # This cleans the input so "  HELP  " becomes "help" automatically!
+        </code>
+    </div>
+</div>
+
+<div id="ch3" class="chapter">
+    <h2>Chapter 3: Storing Data (Lists & Dicts)</h2>
+    <p>In Python, a <b>List</b> is an ordered collection (like a shopping list), and a <b>Dictionary</b> is a set of Key:Value pairs (like a real dictionary or a user profile).</p>
+
+    <h3>List Functions</h3>
+    <table class="function-table">
+        <tr>
+            <th>Function</th>
+            <th>How to Write It</th>
+            <th>Purpose</th>
+        </tr>
+        <tr>
+            <td><code>.append()</code></td>
+            <td><code>mylist.append("item")</code></td>
+            <td>Adds a new item to the very end of the list.</td>
+        </tr>
+        <tr>
+            <td><code>.pop()</code></td>
+            <td><code>mylist.pop(0)</code></td>
+            <td>Removes and returns an item at a specific index (0 is the first).</td>
+        </tr>
+        <tr>
+            <td><code>.sort()</code></td>
+            <td><code>mylist.sort()</code></td>
+            <td>Organizes the list alphabetically or numerically.</td>
+        </tr>
+        <tr>
+            <td><code>len()</code></td>
+            <td><code>len(mylist)</code></td>
+            <td>Tells you exactly how many items are inside.</td>
+        </tr>
+    </table>
+
+    <h3>Dictionary Functions</h3>
+    <p>Dictionaries use <code>{key: value}</code>. They are perfect for storing complex data about one object.</p>
+    <table class="function-table">
+        <tr>
+            <th>Function</th>
+            <th>How to Write It</th>
+            <th>Purpose</th>
+        </tr>
+        <tr>
+            <td><code>.keys()</code></td>
+            <td><code>user.keys()</code></td>
+            <td>Returns a list of all the "labels" (e.g., "name", "age").</td>
+        </tr>
+        <tr>
+            <td><code>.values()</code></td>
+            <td><code>user.values()</code></td>
+            <td>Returns only the data stored (e.g., "Mellor", 13).</td>
+        </tr>
+        <tr>
+            <td><code>.update()</code></td>
+            <td><code>user.update({"key": "val"})</code></td>
+            <td>Adds or changes multiple items at once.</td>
+        </tr>
+    </table>
+
+    <div class="code-box">
+        <p style="color: #38bdf8; margin: 0;"># Example for a Game Inventory:</p>
+        <code style="color: #f472b6;">
+            inventory = ["Sword", "Shield", "Potion"]<br>
+            stats = {"HP": 100, "Level": 13}<br><br>
+            print(f"You have {len(inventory)} items.")
+        </code>
+    </div>
+</div>
+
+<div id="ch4" class="chapter">
+    <h2>Chapter 4: Setup vs. Loop (The Logic Flow)</h2>
+    <p>If you are coming from <b>Arduino</b>, you are used to <code>void setup()</code> and <code>void loop()</code>. In Python, we use global space and <code>while</code> loops to do the same thing.</p>
+
+    <table class="function-table">
+        <tr>
+            <th>Arduino Concept</th>
+            <th>Python Equivalent</th>
+            <th>Purpose</th>
+        </tr>
+        <tr>
+            <td><code>void setup() { ... }</code></td>
+            <td><b>Top of Script</b></td>
+            <td>Run once at the start (define pins, variables, or constants).</td>
+        </tr>
+        <tr>
+            <td><code>void loop() { ... }</code></td>
+            <td><code>while True:</code></td>
+            <td>Repeat the code forever (checking sensors, buttons, or user input).</td>
+        </tr>
+    </table>
+
+    <h3>Example: The Blink Logic</h3>
+    <div class="code-box">
+        <span class="comment"># --- SETUP SECTION (Runs once) ---</span><br>
+        <span class="keyword">import</span> time<br>
+        led_status = <span class="keyword">False</span><br>
+        <br>
+        <span class="comment"># --- LOOP SECTION (Runs forever) ---</span><br>
+        <span class="keyword">while</span> <span class="keyword">True</span>:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;led_status = <span class="keyword">not</span> led_status <span class="comment"># Toggle LED</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;print(<span class="string">"LED is:"</span>, led_status)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;time.sleep(1) <span class="comment"># Wait 1 second</span>
+    </div>
+
+    <h3>Where do I write my functions?</h3>
+    <p>Always define your functions <b>above</b> where you call them. Usually, this goes in the "Setup" area before your main loop starts.</p>
+
+<div id="ch5" class="chapter">
+    <h2>Chapter 5: Making Decisions (Logic)</h2>
+    <p>In Python, we use <code>if</code>, <code>elif</code> (else if), and <code>else</code> to tell the computer what to do based on a condition.</p>
+
+    <h3>Comparison Operators</h3>
+    <table class="function-table">
+        <tr>
+            <th>Symbol</th>
+            <th>Meaning</th>
+            <th>Example</th>
+        </tr>
+        <tr>
+            <td><code>==</code></td>
+            <td>Equal to</td>
+            <td><code>if age == 13:</code></td>
+        </tr>
+        <tr>
+            <td><code>!=</code></td>
+            <td>Not equal to</td>
+            <td><code>if choice != "quit":</code></td>
+        </tr>
+        <tr>
+            <td><code>&gt; / &lt;</code></td>
+            <td>Greater than / Less than</td>
+            <td><code>if height > 175:</code></td>
+        </tr>
+        <tr>
+            <td><code>and / or</code></td>
+            <td>Check multiple things</td>
+            <td><code>if age > 12 and age < 20:</code></td>
+        </tr>
+    </table>
+
+    <h3>The "If" Structure</h3>
+    <p>Remember: You <b>must</b> put a colon (<code>:</code>) at the end of the line and <b>indent</b> the next line.</p>
+    
+    <div class="code-box">
+        <span class="keyword">score</span> = 85<br><br>
+        <span class="keyword">if</span> score >= 90:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;print(<span class="string">"Grade: A"</span>)<br>
+        <span class="keyword">elif</span> score >= 80:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;print(<span class="string">"Grade: B"</span>) <span class="comment"># This will run</span><br>
+        <span class="keyword">else</span>:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;print(<span class="string">"Keep practicing!"</span>)
+    </div>
+
+    <h3>Where to write this?</h3>
+    <p>You can write <code>if</code> statements anywhere. If you put them inside your <b>Loop</b> (<code>while True:</code>), the computer will check the condition thousands of times per second!</p>
+</div>
+
+<div id="ch6" class="chapter">
+    <h2>Chapter 6: Loops (Repeat Actions)</h2>
+    <p>Loops save you from writing the same code over and over. Python has two main types: <code>for</code> and <code>while</code>.</p>
+
+    <h3>The 'For' Loop</h3>
+    <p>Use this when you know <b>how many times</b> you want to repeat something (e.g., through a list or a range of numbers).</p>
+    <div class="code-box">
+        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(5):<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;print(<span class="string">"Number:"</span>, i) <span class="comment"># Prints 0, 1, 2, 3, 4</span><br>
+        <br>
+        <span class="keyword">tools</span> = [<span class="string">"Linux"</span>, <span class="string">"Python"</span>, <span class="string">"Arduino"</span>]<br>
+        <span class="keyword">for</span> item <span class="keyword">in</span> tools:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;print(<span class="string">"Learning:"</span>, item)
+    </div>
+
+    <h3>The 'While' Loop</h3>
+    <p>Use this when you want to repeat <b>until a condition changes</b> (e.g., until a user types "quit").</p>
+    <div class="code-box">
+        <span class="keyword">count</span> = 10<br>
+        <span class="keyword">while</span> count > 0:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;print(<span class="string">"Countdown:"</span>, count)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;count -= 1 <span class="comment"># Subtract 1 each time</span><br>
+        <span class="keyword">print</span>(<span class="string">"Blast off!"</span>)
+    </div>
+
+    <h3>Loop Controls</h3>
+    <table class="function-table">
+        <tr>
+            <th>Command</th>
+            <th>What it does</th>
+            <th>Use Case</th>
+        </tr>
+        <tr>
+            <td><code>break</code></td>
+            <td>Stops the loop instantly.</td>
+            <td>Exit a <code>while True:</code> loop when a button is pressed.</td>
+        </tr>
+        <tr>
+            <td><code>continue</code></td>
+            <td>Skips the rest of the current turn and restarts the loop.</td>
+            <td>Skip "even" numbers in a list.</td>
+        </tr>
+        <tr>
+            <td><code>range()</code></td>
+            <td>Creates a sequence of numbers.</td>
+            <td><code>range(start, stop, step)</code></td>
+        </tr>
+    </table>
+</div>
+
+<div id="ch7" class="chapter">
+    <h2>Chapter 2: Creating Your Own Tools (def)</h2>
+    <p>A <b>Function</b> is a block of code which only runs when it is called. You can pass data, known as <b>parameters</b>, into a function.</p>
+
+    <h3>The 'def' Keyword</h3>
+    <p>To create a function, use <code>def</code> followed by the name and parentheses. You write these in your "Setup" area.</p>
+    
+    <div class="code-box">
+        <span class="keyword">def</span> <span class="accent">greet_user</span>(name):<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"Hello, "</span> + name + <span class="string">"!"</span>)<br><br>
+        <span class="comment"># Now you can use your new command anywhere:</span><br>
+        greet_user(<span class="string">"Mellor"</span>)<br>
+        greet_user(<span class="string">"Admin"</span>)
+    </div>
+
+    <h3>Inputs & Outputs (Arguments & Return)</h3>
+    <table class="function-table">
+        <tr>
+            <th>Concept</th>
+            <th>How to Write It</th>
+            <th>Purpose</th>
+        </tr>
+        <tr>
+            <td><code>Arguments</code></td>
+            <td><code>def func(x, y):</code></td>
+            <td>The variables you "send" into the function to be processed.</td>
+        </tr>
+        <tr>
+            <td><code>return</code></td>
+            <td><code>return result</code></td>
+            <td>The value the function "gives back" to the main script.</td>
+        </tr>
+        <tr>
+            <td><code>*args</code></td>
+            <td><code>def func(*args):</code></td>
+            <td>Used when you don't know how many arguments will be sent.</td>
+        </tr>
+    </table>
+
+    <h3>Example: A Math Tool</h3>
+    <div class="code-box">
+        <span class="keyword">def</span> <span class="accent">calculate_area</span>(width, height):<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;area = width * height<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> area<br><br>
+        <span class="comment"># Using the return value</span><br>
+        my_room = calculate_area(10, 12)<br>
+        print(f"Room size: {my_room} sq ft")
+    </div>
+
+    <p style="background: #334155; padding: 10px; border-radius: 5px;">
+        <b>Where to write them?</b> Always define your <code>def</code> blocks at the very top of your script, right after your imports. If you try to call a function before you define it, Python will crash!
+    </p>
+</div>
+
+<div id="ch8" class="chapter">
+    <h2>Chapter 8: Importing Power (Modules)</h2>
+    <p>A <b>Module</b> is a file containing Python code. You use the <code>import</code> command at the very top of your script to gain new abilities.</p>
+
+    <h3>Common Built-in Modules</h3>
+    <table class="function-table">
+        <tr>
+            <th>Module</th>
+            <th>How to Import</th>
+            <th>What it adds</th>
+        </tr>
+        <tr>
+            <td><code>math</code></td>
+            <td><code>import math</code></td>
+            <td>Advanced math like <code>math.sqrt()</code> (square root) and <code>math.pi</code>.</td>
+        </tr>
+        <tr>
+            <td><code>random</code></td>
+            <td><code>import random</code></td>
+            <td>Generate random numbers: <code>random.randint(1, 100)</code>.</td>
+        </tr>
+        <tr>
+            <td><code>os</code></td>
+            <td><code>import os</code></td>
+            <td>Interact with your operating system (create folders, list files).</td>
+        </tr>
+        <tr>
+            <td><code>time</code></td>
+            <td><code>import time</code></td>
+            <td>Control timing: <code>time.sleep(2)</code> pauses for 2 seconds.</td>
+        </tr>
+    </table>
+
+    <h3>Three Ways to Import</h3>
+    <div class="code-box">
+        <span class="comment"># 1. Import the whole thing</span><br>
+        <span class="keyword">import</span> math<br>
+        print(math.sqrt(16))<br><br>
+        
+        <span class="comment"># 2. Import only what you need (saves memory)</span><br>
+        <span class="keyword">from</span> random <span class="keyword">import</span> randint<br>
+        print(randint(1, 10))<br><br>
+        
+        <span class="comment"># 3. Import with a nickname (Alias)</span><br>
+        <span class="keyword">import</span> datetime <span class="keyword">as</span> dt<br>
+        print(dt.datetime.now())
+    </div>
+
+    <h3>External Libraries (pip)</h3>
+    <p>If Python doesn't have it built-in, you use the <b>Terminal</b> to download it. This is how you get tools for Hacking, Discord Bots, or AI.</p>
+    <div class="code-box" style="background: #111; color: #0f0;">
+        # Run this in your Linux or Windows Terminal (NOT in Python)<br>
+        pip install requests  <span class="comment"># For web scraping</span><br>
+        pip install colorama  <span class="comment"># For colored terminal text</span>
+    </div>
+</div>
+
+<div id="ch9" class="chapter">
+    <h2>Chapter 9: File Handling (Read & Write)</h2>
+    <p>In Python, you can open, read, write, and delete files. This is how you save user data, logs, or configuration settings.</p>
+
+    <h3>The 'open()' Function</h3>
+    <p>The <code>open()</code> function takes two arguments: the <b>filename</b> and the <b>mode</b>.</p>
+    
+    <table class="function-table">
+        <tr>
+            <th>Mode</th>
+            <th>Description</th>
+            <th>Use Case</th>
+        </tr>
+        <tr>
+            <td><code>"r"</code></td>
+            <td><b>Read:</b> Opens a file for reading (Default).</td>
+            <td>Reading a list of passwords or settings.</td>
+        </tr>
+        <tr>
+            <td><code>"w"</code></td>
+            <td><b>Write:</b> Overwrites the file with new data.</td>
+            <td>Saving a fresh high score.</td>
+        </tr>
+        <tr>
+            <td><code>"a"</code></td>
+            <td><b>Append:</b> Adds new data to the end of the file.</td>
+            <td>Adding a new line to a log file.</td>
+        </tr>
+    </table>
+
+    <h3>The Modern Way: 'with open'</h3>
+    <p>Using <code>with</code> is the "great" way to handle files because it automatically closes the file for you, preventing memory leaks.</p>
+    
+    <div class="code-box">
+        <span class="comment"># Writing to a file</span><br>
+        <span class="keyword">with</span> <span class="keyword">open</span>(<span class="string">"test.txt"</span>, <span class="string">"w"</span>) <span class="keyword">as</span> f:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;f.write(<span class="string">"Hello Mellor!\nWelcome to Python Mastery."</span>)<br><br>
+        
+        <span class="comment"># Reading from a file</span><br>
+        <span class="keyword">with</span> <span class="keyword">open</span>(<span class="string">"test.txt"</span>, <span class="string">"r"</span>) <span class="keyword">as</span> f:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;content = f.read()<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;print(content)
+    </div>
+
+    <h3>Useful File Commands</h3>
+    <table class="function-table">
+        <tr>
+            <th>Command</th>
+            <th>Effect</th>
+        </tr>
+        <tr>
+            <td><code>f.read()</code></td>
+            <td>Reads the entire file as one long string.</td>
+        </tr>
+        <tr>
+            <td><code>f.readlines()</code></td>
+            <td>Reads the file and puts each line into a <b>List</b>.</td>
+        </tr>
+        <tr>
+            <td><code>os.remove("file.txt")</code></td>
+            <td>Deletes a file (requires <code>import os</code>).</td>
+        </tr>
+    </table>
+</div>
+
+<div id="ch10" class="chapter">
+    <h2>Chapter 10: Bulletproofing Your Code (Try/Except)</h2>
+    <p>In Python, an error that happens during execution is called an <b>Exception</b>. If you don't "catch" it, your program will stop immediately.</p>
+
+    <h3>The 'Try...Except' Block</h3>
+    <p>Think of this like a safety net for your code. You <b>try</b> to run a block of code, and if an error happens, the <b>except</b> block catches it.</p>
+    
+    <div class="code-box">
+        <span class="keyword">try</span>:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;number = <span class="keyword">int</span>(input(<span class="string">"Enter a number: "</span>))<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;result = 10 / number<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;print(result)<br>
+        <span class="keyword">except</span> <span class="accent">ValueError</span>:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;print(<span class="string">"Error: You didn't enter a valid number!"</span>)<br>
+        <span class="keyword">except</span> <span class="accent">ZeroDivisionError</span>:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;print(<span class="string">"Error: You cannot divide by zero!"</span>)
+    </div>
+
+    <h3>Handling Specific Errors</h3>
+    <table class="function-table">
+        <tr>
+            <th>Error Type</th>
+            <th>When it happens</th>
+        </tr>
+        <tr>
+            <td><code>FileNotFoundError</code></td>
+            <td>When you try to open a file that doesn't exist.</td>
+        </tr>
+        <tr>
+            <td><code>IndexError</code></td>
+            <td>When you try to access a list item that isn't there (e.g., item 10 in a list of 5).</td>
+        </tr>
+        <tr>
+            <td><code>KeyError</code></td>
+            <td>When you look for a key in a Dictionary that hasn't been created.</td>
+        </tr>
+        <tr>
+            <td><code>Exception</code></td>
+            <td>The "Catch-All"—it catches any error that happens.</td>
+        </tr>
+    </table>
+
+    <h3>The 'Finally' Clause</h3>
+    <p>The <code>finally</code> block will run <b>no matter what</b>, whether an error happened or not. This is great for closing files or stopping a motor on an Arduino.</p>
+    
+    <div class="code-box">
+        <span class="keyword">try</span>:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;f = <span class="keyword">open</span>(<span class="string">"data.txt"</span>)<br>
+        <span class="keyword">except</span>:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;print(<span class="string">"Something went wrong."</span>)<br>
+        <span class="keyword">finally</span>:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;print(<span class="string">"This always runs (Good for cleanup!)"</span>)
+    </div>
+</div>
+
+<div id="ch11" class="chapter">
+    <h2>Chapter 11: Blueprints & Objects (OOP)</h2>
+    <p>Imagine you are building a game like <i>Minecraft</i>. You don't want to write code for every single block. Instead, you create a <b>Class</b> (the blueprint) for a "Block" and then create thousands of <b>Objects</b> from it.</p>
+
+    <h3>The 'class' Keyword</h3>
+    <p>A class contains <b>Attributes</b> (variables like color or health) and <b>Methods</b> (functions the object can do).</p>
+    
+    <div class="code-box">
+        <span class="keyword">class</span> <span class="accent">Player</span>:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">def</span> <span class="keyword">__init__</span>(self, name, health):<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.name = name <span class="comment"># Attribute</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.health = health<br><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">def</span> <span class="accent">take_damage</span>(self, amount):<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.health -= amount<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(f"{self.name} now has {self.health} HP")<br><br>
+        <span class="comment"># Creating Objects from the Class</span><br>
+        p1 = Player(<span class="string">"Mellor"</span>, 100)<br>
+        p1.take_damage(20)
+    </div>
+
+    <h3>OOP Terminology</h3>
+    <table class="function-table">
+        <tr>
+            <th>Term</th>
+            <th>What it is</th>
+            <th>Analogy</th>
+        </tr>
+        <tr>
+            <td><code>Class</code></td>
+            <td>The Blueprint.</td>
+            <td>The drawing of a car.</td>
+        </tr>
+        <tr>
+            <td><code>Object</code></td>
+            <td>The Instance.</td>
+            <td>The actual car you drive.</td>
+        </tr>
+        <tr>
+            <td><code>__init__</code></td>
+            <td>The Constructor.</td>
+            <td>Setting the color and engine when the car is built.</td>
+        </tr>
+        <tr>
+            <td><code>self</code></td>
+            <td>The current object.</td>
+            <td>The specific car you are sitting in right now.</td>
+        </tr>
+    </table>
+
+    <h3>Inheritance: The Pro Move</h3>
+    <p>You can create a "Child" class that copies everything from a "Parent" class but adds its own twist.</p>
+    <div class="code-box">
+        <span class="keyword">class</span> <span class="accent">HackerPlayer</span>(Player): <span class="comment"># Inherits from Player</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">def</span> <span class="accent">reveal_ip</span>(self):<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(<span class="string">"Scanning network..."</span>)<br><br>
+        <span class="comment"># This player has health AND the ability to scan!</span><br>
+        p2 = HackerPlayer(<span class="string">"Neo"</span>, 150)
+    </div>
+</div>
+
+<div id="ch12" class="chapter">
+    <h2>Chapter 12: The Python Shortcut (List Comprehensions)</h2>
+    <p>List comprehensions provide a concise way to create lists. Common applications are to make new lists where each element is the result of some operations applied to each member of another sequence.</p>
+
+    <h3>The Old Way vs. The Pro Way</h3>
+    <p>Imagine you want to create a list of squares for numbers 0 to 9.</p>
+    
+    <div class="code-box">
+        <span class="comment"># The Old Way (4 lines)</span><br>
+        squares = []<br>
+        <span class="keyword">for</span> x <span class="keyword">in</span> <span class="keyword">range</span>(10):<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;squares.append(x**2)<br><br>
+        
+        <span class="comment"># The Pro Way (1 line!)</span><br>
+        squares = [x**2 <span class="keyword">for</span> x <span class="keyword">in</span> <span class="keyword">range</span>(10)]
+    </div>
+
+    <h3>Adding Logic (If Statements)</h3>
+    <p>You can even add an <code>if</code> inside the shortcut to filter data instantly.</p>
+    
+    <div class="code-box">
+        <span class="comment"># Only keep even numbers from a list</span><br>
+        numbers = [1, 2, 3, 4, 5, 6, 7, 8]<br>
+        evens = [x <span class="keyword">for</span> x <span class="keyword">in</span> numbers <span class="keyword">if</span> x % 2 == 0]<br>
+        <span class="comment"># Result: [2, 4, 6, 8]</span>
+    </div>
+
+    <h3>When to use this?</h3>
+    <table class="function-table">
+        <tr>
+            <th>Scenario</th>
+            <th>Benefit</th>
+        </tr>
+        <tr>
+            <td><code>Data Filtering</code></td>
+            <td>Quickly removing unwanted items from a list of logs or IPs.</td>
+        </tr>
+        <tr>
+            <td><code>Transformation</code></td>
+            <td>Converting a list of strings to integers in one go.</td>
+        </tr>
+        <tr>
+            <td><code>Performance</code></td>
+            <td>List comprehensions are actually slightly faster than standard loops in Python.</td>
+        </tr>
+    </table>
+    
+    <p style="background: #e11d48; padding: 10px; border-radius: 5px; margin-top: 15px;">
+        <b>Warning:</b> Don't make them <i>too</i> long. If a list comprehension is longer than one line, it’s better to use a normal <code>for</code> loop so your code stays readable!
+    </p>
+</div>
+
+<div id="ch13" class="chapter">
+    <h2>Chapter 13: Power & Efficiency (Decorators & Generators)</h2>
+    <p>These two concepts separate the beginners from the experts. <b>Generators</b> save memory, and <b>Decorators</b> modify how functions work.</p>
+
+    <h3>1. Generators (yield)</h3>
+    <p>A normal function returns a full list and stops. A <b>Generator</b> "yields" one item at a time. This is vital if you are scanning millions of IP addresses or reading a 10GB file.</p>
+    
+    <div class="code-box">
+        <span class="keyword">def</span> <span class="accent">count_to_million</span>():<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;n = 1<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">while</span> n <= 1000000:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">yield</span> n <span class="comment"># Pauses here and gives the value</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n += 1<br><br>
+        
+        <span class="comment"># This doesn't store 1,000,000 numbers in RAM!</span><br>
+        <span class="keyword">for</span> num <span class="keyword">in</span> count_to_million():<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;print(num)
+    </div>
+
+    <h3>2. Decorators (@)</h3>
+    <p>Decorators allow you to "wrap" a function in another function to add extra code before or after it runs. In cybersecurity, this is often used for <b>Logging</b> or <b>Authentication</b>.</p>
+    
+    <div class="code-box">
+        <span class="keyword">def</span> <span class="accent">admin_only</span>(func):<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">def</span> <span class="keyword">wrapper</span>():<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(<span class="string">"Checking permissions..."</span>)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;func()<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> wrapper<br><br>
+
+        <span class="keyword">@admin_only</span><br>
+        <span class="keyword">def</span> <span class="accent">delete_database</span>():<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;print(<span class="string">"Database Deleted."</span>)
+    </div>
+
+    <h3>Comparison Table</h3>
+    <table class="function-table">
+        <tr>
+            <th>Concept</th>
+            <th>The "Trick"</th>
+            <th>The Benefit</th>
+        </tr>
+        <tr>
+            <td><code>Generators</code></td>
+            <td>Uses <code>yield</code> instead of <code>return</code>.</td>
+            <td>Uses 0% extra RAM even for massive datasets.</td>
+        </tr>
+        <tr>
+            <td><code>Decorators</code></td>
+            <td>Uses <code>@function_name</code> above a definition.</td>
+            <td>Clean code; you don't have to rewrite logic for every function.</td>
+        </tr>
+    </table>
+</div>
+
+<div id="ch14" class="chapter">
+    <h2>Chapter 14: Talking to the Web (APIs & Scraping)</h2>
+    <p>Modern Python is often used to pull data from the internet. You can use <b>APIs</b> (official data doors) or <b>Web Scraping</b> (extracting data from a website's HTML).</p>
+
+    <h3>1. Using APIs with 'requests'</h3>
+    <p>An API (Application Programming Interface) is like a menu at a restaurant. You ask for a specific "dish" (data), and the server brings it to you in <b>JSON</b> format.</p>
+    
+    <div class="code-box">
+        <span class="keyword">import</span> requests<br><br>
+        <span class="comment"># Getting data from a public API</span><br>
+        response = requests.get(<span class="string">"https://api.example.com/data"</span>)<br>
+        data = response.json()<br>
+        print(data[<span class="string">"value"</span>])
+    </div>
+
+    <h3>2. Web Scraping with 'BeautifulSoup'</h3>
+    <p>When a site doesn't have an API, you "scrape" it. This means your script reads the HTML code of the page and finds the info you want.</p>
+    
+    <div class="code-box">
+        <span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup<br>
+        <span class="keyword">import</span> requests<br><br>
+        html = requests.get(<span class="string">"https://google.com"</span>).text<br>
+        soup = BeautifulSoup(html, <span class="string">"html.parser"</span>)<br>
+        print(soup.title.text) <span class="comment"># Prints the website title</span>
+    </div>
+
+    <h3>The HTTP Status Codes</h3>
+    <p>When you talk to the web, the server sends back a code to tell you what happened:</p>
+    <table class="function-table">
+        <tr>
+            <th>Code</th>
+            <th>Meaning</th>
+            <th>What it means for you</th>
+        </tr>
+        <tr>
+            <td><code>200</code></td>
+            <td><b>OK</b></td>
+            <td>Success! You got the data.</td>
+        </tr>
+        <tr>
+            <td><code>404</code></td>
+            <td><b>Not Found</b></td>
+            <td>The URL or page doesn't exist.</td>
+        </tr>
+        <tr>
+            <td><code>403</code></td>
+            <td><b>Forbidden</b></td>
+            <td>The website is blocking your script (Anti-Scraping).</td>
+        </tr>
+        <tr>
+            <td><code>500</code></td>
+            <td><b>Server Error</b></td>
+            <td>The website's computer crashed.</td>
+        </tr>
+    </table>
+</div>
+
+<div id="ch15" class="chapter" style="border: 2px solid #ef4444;">
+    <h2 style="color: #ef4444;">Chapter 15: The Final Level (Cybersecurity)</h2>
+    <p>Python is the #1 language for cybersecurity because of its powerful libraries that can "sniff" network traffic, scan ports, and automate pentesting tasks.</p>
+
+    <h3>1. Socket Programming (Port Scanning)</h3>
+    <p>A <b>Socket</b> is an internal endpoint for sending or receiving data. You can use it to check if a "door" (port) is open on a server.</p>
+    
+    <div class="code-box">
+        <span class="keyword">import</span> socket<br><br>
+        <span class="keyword">def</span> <span class="accent">scan_port</span>(ip, port):<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;s.settimeout(1)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span> s.connect_ex((ip, port)) == 0:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(f<span class="string">"Port {port} is OPEN"</span>)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;s.close()<br><br>
+        scan_port(<span class="string">"127.0.0.1"</span>, 80)
+    </div>
+
+    <h3>2. Automating Linux Commands (Subprocess)</h3>
+    <p>Since you use <b>Linux Mint</b> and <b>Arch</b>, you can use Python to run terminal commands (like <code>nmap</code> or <code>ifconfig</code>) and read the output.</p>
+    
+    <div class="code-box">
+        <span class="keyword">import</span> subprocess<br><br>
+        <span class="comment"># Running a terminal command via Python</span><br>
+        result = subprocess.check_output([<span class="string">"ls"</span>, <span class="string">"-l"</span>])<br>
+        print(result.decode())
+    </div>
+
+    <h3>Essential Security Libraries</h3>
+    <table class="function-table">
+        <tr>
+            <th>Library</th>
+            <th>Purpose</th>
+            <th>Pro Tip</th>
+        </tr>
+        <tr>
+            <td><code>Scapy</code></td>
+            <td>Packet sniffing and forging.</td>
+            <td>Use this to see exactly what data is leaving your PC.</td>
+        </tr>
+        <tr>
+            <td><code>Cryptography</code></td>
+            <td>Encryption/Decryption.</td>
+            <td>Never roll your own crypto; use this standard library.</td>
+        </tr>
+        <tr>
+            <td><code>Paramiko</code></td>
+            <td>SSH Connections.</td>
+            <td>Automate logging into your Raspberry Pi or servers.</td>
+        </tr>
+        <tr>
+            <td><code>Hashlib</code></td>
+            <td>MD5/SHA256 Hashing.</td>
+            <td>Check if a file has been tampered with (File Integrity).</td>
+        </tr>
+    </table>
+
+    <div style="background: #450a0a; padding: 15px; border-radius: 8px; margin-top: 20px; border-left: 5px solid #ef4444;">
+        <b>The Ethical Hacker's Code:</b> Only use these tools on systems you own or have explicit permission to test. Using these against others without permission is illegal!
+    </div>
+</div>
+
+<div id="errors" class="chapter">
+    <h2>Chapter 16: Troubleshooting (Common Errors)</h2>
+    <p>When your code crashes, Python gives you a "Traceback." Here is how to read them:</p>
+    <table class="function-table">
+        <tr><th>Error</th><th>What it means</th><th>How to fix</th></tr>
+        <tr><td><code>SyntaxError</code></td><td>You forgot a colon <code>:</code> or a bracket <code>)</code>.</td><td>Check the line number mentioned.</td></tr>
+        <tr><td><code>IndentationError</code></td><td>Your spaces are wrong.</td><td>Ensure all code inside a loop/if is indented 4 spaces.</td></tr>
+        <tr><td><code>NameError</code></td><td>You used a variable before defining it.</td><td>Check for typos in your variable names.</td></tr>
+        <tr><td><code>TypeError</code></td><td>You tried to add a String to an Integer.</td><td>Use <code>str()</code> or <code>int()</code> to convert.</td></tr>
+    </table>
+</div>
+
+<div id="cyber-cheat" class="chapter" style="border-left: 5px solid #22c55e;">
+    <h2>Chapter 17: Linux & Cyber Cheat Sheet</h2>
+    <p>Since you use <b>Linux Mint/Arch</b>, these Python commands are specifically for interacting with your system.</p>
+    <div class="code-box">
+        <span class="comment"># Get your local IP address</span><br>
+        <span class="keyword">import</span> socket<br>
+        hostname = socket.gethostname()<br>
+        ip_address = socket.gethostbyname(hostname)<br><br>
+        
+        <span class="comment"># Check if a website is up (Ping)</span><br>
+        <span class="keyword">import</span> os<br>
+        response = os.system(<span class="string">"ping -c 1 google.com"</span>)<br>
+        <span class="keyword">if</span> response == 0: print(<span class="string">"Network is UP"</span>)
+    </div>
+</div>
+
+<script>
+function searchBook() {
+    let input = document.getElementById('guideSearch').value.toLowerCase();
+    let chapters = document.getElementsByClassName('chapter');
+    
+    for (let i = 0; i < chapters.length; i++) {
+        let text = chapters[i].innerText.toLowerCase();
+        if (text.includes(input)) {
+            chapters[i].style.display = "";
+        } else {
+            chapters[i].style.display = "none";
+        }
+    }
+}
+</script>
+
+
+
+
+
+
+
+    </main>
+
+</body>
+</html>
